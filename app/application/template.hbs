@@ -1,4 +1,17 @@
-<div class="">
-<h2>Hello World</h2>  
-</div>
-{{outlet}}
+<h1>Chef Tracker</h1>
+
+<ul>
+  {{#each model as |chef|}}
+      {{#if chef.isAvailable}}
+        <li class="available">
+          {{chef.name}}
+          <button {{action "unAvailable" chef}}>leave</button>
+        </li>
+      {{else}}
+          <li class="not-available">
+            {{chef.name}}
+            <button {{action "isAvailable" chef}}>enter</button>
+          </li>
+      {{/if}}
+  {{/each}}
+</ul>

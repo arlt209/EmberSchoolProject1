@@ -4,6 +4,14 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'ember-school-project1',
     environment: environment,
+    firebase: {
+      apiKey: "AIzaSyCx08ouBMeF3a57BD11JqIF9dLOh0U9L_U",
+      authDomain: "menu-tracker-f1064.firebaseapp.com",
+      databaseURL: "https://menu-tracker-f1064.firebaseio.com",
+      projectId: "menu-tracker-f1064",
+      storageBucket: "menu-tracker-f1064.appspot.com",
+      messagingSenderId: "128302521535"
+    },
     rootURL: '/',
     locationType: 'auto',
     EmberENV: {
