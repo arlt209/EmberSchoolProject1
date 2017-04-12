@@ -6,8 +6,11 @@
   {{#each model as |chef|}}
       {{#if chef.isAvailable}}
         <li class="available">
-          {{chef.name}}
-          <button {{action "unAvailable" chef}}>Exit</button>
+          {{chef.name}} <button {{action "unAvailable" chef}}> Exit </button><br><br>
+              Number Of Students
+          <button {{action "removeStudent" chef}}> - </button>
+            {{chef.students}}
+          <button {{action "addStudent" chef}}> + </button>
         </li>
       {{else}}
           <li class="not-available">

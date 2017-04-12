@@ -24,8 +24,10 @@ export default Ember.Controller.extend({
       },
       deleteChef(chef){
         chef.destroyRecord();
+      },
+      removeStudent(chef.students){
+        chef.students.destroyRecord();
       }
-
   }
 
 
