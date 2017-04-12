@@ -1,17 +1,25 @@
-<h1>Chef Tracker</h1>
+<h1>{{title}}</h1>
+
+<p>{{availableChefs.length}} of our {{menuLength}} are cooking right now! </p>
 
 <ul>
   {{#each model as |chef|}}
       {{#if chef.isAvailable}}
         <li class="available">
           {{chef.name}}
-          <button {{action "unAvailable" chef}}>leave</button>
+          <button {{action "unAvailable" chef}}>Exit</button>
         </li>
       {{else}}
           <li class="not-available">
             {{chef.name}}
-            <button {{action "isAvailable" chef}}>enter</button>
+            <button {{action "isAvailable" chef}}>Enter Building</button>
+            <button {{action "deleteChef" chef}}>Fire</button>
           </li>
       {{/if}}
   {{/each}}
 </ul>
+
+<hr>
+
+{{input value=newChef}}
+<button {{action "saveNewChef"}}>New chef</button>
