@@ -28,11 +28,11 @@ export default Ember.Controller.extend({
       },
       addStudent(chef){
         chef.set('students', chef.get('students') + 1);
-        console.log('add student');
+        chef.save();
       },
       removeStudent(chef){
         chef.set('students', chef.get('students') - 1);
-        console.log('remove student');
+        chef.save();
       }
   }
 });
