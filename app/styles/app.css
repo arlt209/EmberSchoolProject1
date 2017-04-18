@@ -2,3 +2,10 @@
 li.not-available {
   color: grey;
 }
+.flex-container {
+  display: flex;
+  flex-direction: row;
+}
+.flex-item {
+  padding: 10px
+}

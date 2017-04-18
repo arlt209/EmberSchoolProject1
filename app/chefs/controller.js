@@ -19,9 +19,11 @@ export default Ember.Controller.extend({
       saveNewChef(){
         this.store.createRecord('chef', {
           isAvailable: false,
-          name: this.get('newChef')
+          name: this.get('newChef'),
+          description: this.get('newDescription')
         }).save();
         this.set('newChef', '');
+        this.set('newDescription', '');
       },
       deleteChef(chef){
         chef.destroyRecord();
@@ -33,6 +35,7 @@ export default Ember.Controller.extend({
       removeStudent(chef){
         chef.set('students', chef.get('students') - 1);
         chef.save();
-      }
+      },
+      
   }
 });

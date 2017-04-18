@@ -1,32 +1,37 @@
-<h1>{{title}}</h1>
+<div class="flex-container">
+  <div class="flex-item">
+    <h1>{{title}}</h1>
+    <p>{{availableChefs.length}} of our {{model.length}} are cooking right now! </p>
+    <p>Our {{model.length}} Chefs teach {{totalStudents}} students total</p>
 
-<p>{{availableChefs.length}} of our {{model.length}} are cooking right now! </p>
-<p>Our {{model.length}} Chefs teach {{totalStudents}} students total</p>
+    <ul>
+      {{#each model as |chef|}}
+          {{#if chef.isAvailable}}
+            <li class="available">
+              {{#link-to 'chefs.chef' chef.id}}{{chef.name}}{{/link-to}}
+              <button {{action "unAvailable" chef}}>Exit</button> <br>
+              Number of Students: 
+              <button {{action "removeStudent" chef}}>-</button>
+              {{chef.students}}
+              <button {{action "addStudent" chef}}>+</button> <br><br>
+            </li>
+          {{else}}
+              <li class="not-available">
+                {{chef.name}}
+                <button {{action "isAvailable" chef}}>Enter Building</button>
+                <button {{action "deleteChef" chef}}>Fire</button> <br><br>
+              </li>
+          {{/if}}
+      {{/each}}
+    </ul>
+    <hr>
+    {{input value=newChef placeholder="Chef Name"}}
+    {{input value=newDescription placeholder="Chef Description"}}
+    <button {{action "saveNewChef"}}>Save Chef</button>
+    
+  </div>
+  <div class="flex-item">
+    {{outlet}}
+  </div>
+</div>
 
-<ul>
-  {{#each model as |chef|}}
-      {{#if chef.isAvailable}}
-        <li class="available">
-          {{chef.name}}   
-          <button {{action "unAvailable" chef}}>Exit</button> <br>
-          Number of Students: 
-          <button {{action "removeStudent" chef}}>-</button>
-            {{chef.students}}
-          <button {{action "addStudent" chef}}>+</button> <br><br>
-        </li>
-      {{else}}
-          <li class="not-available">
-            {{chef.name}}
-            <button {{action "isAvailable" chef}}>Enter Building</button>
-            <button {{action "deleteChef" chef}}>Fire</button> <br><br>
-          </li>
-      {{/if}}
-
-
-  {{/each}}
-</ul>
-
-<hr>
-
-{{input value=newChef}}
-<button {{action "saveNewChef"}}>New chef</button>
