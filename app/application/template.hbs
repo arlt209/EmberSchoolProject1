@@ -1,30 +1,5 @@
-<h1>{{title}}</h1>
-
-<p>{{availableChefs.length}} of our {{totalChefs}} are cooking right now! </p>
-<p>{{totalChefs}} are teaching {{totalStudents}}</p>
-
-<ul>
-  {{#each model as |chef|}}
-      {{#if chef.isAvailable}}
-        <li class="available">
-          {{chef.name}} <button {{action "unAvailable" chef}}> Exit </button>
-              
-        </li>
-      {{else}}
-          <li class="not-available">
-            {{chef.name}}
-            <button {{action "isAvailable" chef}}>Enter Building</button>
-            <button {{action "deleteChef" chef}}>Fire</button>
-          </li>
-      {{/if}}
-      Number Of Students:
-      <button {{action "removeStudent" chef}}> - </button>
-      {{chef.students}}
-      <button {{action "addStudent" chef}}> + </button><br><br>
-  {{/each}}
-</ul>
-
+{{link-to 'About' 'about'}} |
+{{link-to 'Chefs' 'chefs'}} |
+{{link-to 'Training' 'training'}}
 <hr>
-
-{{input value=newChef}}
-<button {{action "saveNewChef"}}>New chef</button>
+{{outlet}}
